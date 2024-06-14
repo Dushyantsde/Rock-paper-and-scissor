@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors</title>
+</head>
+
+<style>
+    body {
+        font-family: sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    #game-container {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    #result {
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <h1>Rock-Paper-Scissors</h1>
+    <div id="game-container">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+
+    </div>
+    <p id="result"> </p>
+
+
+
+    <script>
+
+        // Created an array where rock, paper and scissors are put together
+
+        const choices = ['rock', 'paper', 'scissors'];
+        const resultDisplay = document.getElementById('result');
+
+        function playGame(userChoice) {
+
+
+
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            let message = '';
+
+
+            if (userChoice === computerChoice) {
+                message = " It's a tie!";
+
+            } else if (
+
+                (userChoice === 'rock' && computerChoice === 'scissors') ||
+                (userChoice === 'paper' && computerChoice === 'rock') ||
+                (userChoice === 'scissors' && computerChoice === ' paper')
+            ) {
+                message = "You win!";
+
+            } else {
+                message = " You lose!";
+            }
+
+            resultDisplay.textContent = ` You chose ${userChoice}. Computer chose ${computerChoice}. ${message}`;
+
+        }
+
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => button.addEventListener('click', () =>
+            playGame(button.id)
+
+
+        ));
+
+
+    </script>
+</body>
+
+</html>
